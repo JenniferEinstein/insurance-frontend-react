@@ -10,15 +10,26 @@ import Footer from "../common/Footer";
 
 
 function Home() {
+  const navigate = useNavigate;
+  
   return (
-    <>
-      <div>
-        <h2>Home dot js</h2>
-        </NavBar>
-        </SideBar>
-        </Footer>
-      </div>
-    </>
+    <div className='home'>
+      <main>
+      <h2>Welcome to the Home Page. Home dot js</h2>
+      <button className='all-items-btn'  onClick = {() => navigate("/")}>
+        This button goes to /
+      </button>
+
+
+
+
+        <NavBar />
+        <SideBar />
+        <Footer />
+
+        
+        </main>
+    </div>
   )
 }
 

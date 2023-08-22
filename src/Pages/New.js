@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import "New.css";
+// import "New.css";
 
 const API = process.env.REACT_APP_API_URL;
 
