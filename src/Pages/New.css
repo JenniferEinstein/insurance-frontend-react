@@ -1,0 +1,52 @@
+
+
+
+
+/* to change length of input fields */
+.wide-input {
+    width: 300px;
+}
+.narrow-input {
+    width: 70px; 
+}
+
+
+.vertical-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust the gap between form fields */
+    margin-left:50px
+}
+
+.vertical-form label,
+.vertical-form input,
+.vertical-form select,
+.vertical-form button {
+    margin: 5px 5px; /* Adjust the margin for vertical spacing. Supposedly */
+}
+
+
+/* Add margin-bottom to form groups for spacing between each group */
+.form-group {
+    margin-bottom: 20px; 
+}
+
+
+/* buttons */
+.rounded-button {
+    border-radius: 30px; 
+    background-color: #D29292; 
+    color: black;
+    padding: 20px; 
+    border: none; 
+    cursor: pointer;
+}
+.rounded-button-smaller {
+    border-radius: 8px; 
+    background-color: black; 
+    color: white;
+    padding: 8px 10px; 
+    margin: 10px;
+    border: none;
+    cursor: pointer; 
+}
