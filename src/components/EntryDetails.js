@@ -3,14 +3,17 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-const API = process.env.REACT_APP_API_URL;
-
 function EntryDetails() {
     let { id } = useParams();
     let navigate = useNavigate();
     
     const [ entry, setEntry ] = useState([])
+    const API = process.env.REACT_APP_API_URL
 
+
+    const handleDelete = () => {
+        deleteEntry();
+      };
 
     useEffect(() => {
         axios
@@ -27,13 +30,13 @@ function EntryDetails() {
     const deleteEntry = () => {
         axios
         .delete(`${API}/entry/${id}`)
-        .then(() => navigate(`/all-entries`))
+        .then(() => navigate(`/entries`))
         .catch((c) => console.error("catch", c));
     };
 
     return(
         <div className="entry-details">
-
+          <h1>Entry details will be here.</h1>
         </div>
     )
 }

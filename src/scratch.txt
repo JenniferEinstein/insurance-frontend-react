@@ -1,0 +1,16 @@
+
+  <Route path='/' element={<Home />} />
+  <Route path='/all-entries' element={<Index />} />
+  <Route path='/entry/new' element={<New />} />
+  <Route path='/entry/:id/edit' element={<Edit />} />
+  <Route path='/entry/:id' element={<Show />} />
+  <Route path='*' element={<PageNotFound />} /> 
+
+
+  <Route path='/' element={<Home />} />
+  <Route path="/all-entries" element={<Index />} />
+  <Route path="/entry/new" element={<New />} />
+  <Route path="/entry/:id/edit" element={<Edit />} />
+  <Route path="/entry/:id" element={<Show />} />
+  <Route path="*" element={<PageNotFound />} />
+

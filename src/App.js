@@ -8,33 +8,45 @@ import './App.css';
 
 //PAGES
 import Home from "./components/landing/Home";
-import Index from "./Pages/Index";
 import Show from "./Pages/Show";
-import Edit from "./Pages/Edit";
-import New from "./Pages/New";
+import Entries from "./components/Entries";
 import PageNotFound from "./Pages/PageNotFound"
+import Edit from "./Pages/Edit";
+// import Index from "./Pages/Index";
+// import New from "./Pages/New";
+
 
 
 //COMPONENTS
 import NavBar from './components/common/NavBar';
-import Sidebar from './components/common/SideBar';
-import Footer from "./components/common/Footer";
+import Entry from './components/Entry';
+import EntryNewForm from './components/EntryNewForm';
+import EntryEditForm from './components/EntryEditForm';
+// import Sidebar from './components/common/SideBar';
+// import Footer from "./components/common/Footer";
 
 function App() {
   return (
     <div className="App">
+      <h1>App component</h1>
       <Router>
         <NavBar />
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path="/all-entries" element={<Index />} />
-              <Route path="/entry/new" element={<New />} />
-              <Route path="/entry/:id/edit" element={<Edit />} />
-              <Route path="/entry/:id" element={<Show />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
+            <Route path='/entry' element={<Entry />} />
+            <Route path='/entries' element={<Entries />} />
+            <Route path='/entry/new' element={<EntryNewForm />} />
+            <Route path="/entry/edit" element={<Edit />} />/
+            <Route path="/entry/editform" element={<EntryEditForm />} />/
+            <Route path='/entry/:id' element={<Show />} />
+            <Route path='*' element={<PageNotFound />} />
+
+            {/* <Route path='/entry/:id/edit' element={<Edit />} /> */}
+  
+
+          </Routes>
         </main>
       </Router>
     </div>
@@ -42,3 +54,32 @@ function App() {
 }
 
 export default App;
+
+
+/* ==  ORIGINAL ROUTES ==
+B
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/entry' element={<Entry />} />
+            <Route path='/entry/entries' element={<Index />} />
+            <Route path='/entry/new' element={<EntryNewForm />} />
+            <Route path='/entry/:id' element={<Show />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+
+
+
+
+
+A
+
+            <Route path='/' element={<Home />} />
+            <Route path='/entry' element={<Entry />} />
+            <Route path='/entry/all-entries' element={<Index />} />
+            <Route path='/entry/new' element={<New />} />
+            <Route path='/entry/:id/edit' element={<Edit />} />
+            <Route path='/entry/:id' element={<Show />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+
+*/
