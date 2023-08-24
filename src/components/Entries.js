@@ -35,6 +35,7 @@ function Entries() {
                 <th>Description</th>
                 <th>Cost</th>
                 <th>Status</th>
+                <th>EOB</th>
             </tr>
           </thead>
           <tbody>

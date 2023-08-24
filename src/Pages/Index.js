@@ -10,18 +10,22 @@ function Index() {
     <div className='index'>
       <h2>The Index Page</h2>
       <div>
-        <button>
-          <Link to="/entries">Link to Entries in index</Link>
-        </button>
-      </div>
-
-      <div>
         <Entries />
-        
       </div>
-
     </div>
   )
 }
 
 export default Index
+
+
+/* Old Code
+Why did I have this. It leads to itself.
+
+      <div>
+        <button>
+          <Link to="/entries">Link to Entries in index</Link>
+        </button>
+      </div>
+
+      */

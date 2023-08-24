@@ -27,11 +27,11 @@ function App() {
         <main>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/entry' element={<Entry />} />
             <Route path='/entries' element={<Index />} />
             <Route path='/entry/new' element={<New />} />
             <Route path="/entry/edit" element={<Edit />} />/
             <Route path='/entry/:id' element={<Show />} />
+            <Route path='/entry' element={<Entry />} />
             <Route path='*' element={<PageNotFound />} />
 
             {/* <Route path='/entry/:id/edit' element={<Edit />} /> */}
@@ -48,6 +48,20 @@ export default App;
 
 
 /* ==  ORIGINAL ROUTES ==
+C
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/entries' element={<Index />} />
+            <Route path='/entry/new' element={<New />} />
+            <Route path="/entry/edit" element={<Edit />} />/
+            <Route path='/entry/:id' element={<Show />} />
+            <Route path='/entry' element={<Entry />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+
+
+
+
 B
           <Routes>
             <Route path='/' element={<Home />} />
@@ -57,9 +71,6 @@ B
             <Route path='/entry/:id' element={<Show />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
-
-
-
 
 
 A
