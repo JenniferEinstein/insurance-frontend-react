@@ -1,6 +1,6 @@
 // import {useState, useEffect} from 'react';
 // import axios from 'axios';
-// import Entries from '../components/Entries';
+import Entries from '../components/Entries';
 import { Link } from 'react-router-dom';
 
 
@@ -9,9 +9,16 @@ function Index() {
   return (
     <div className='index'>
       <h2>The Index Page</h2>
-      <button>
-        <Link to="/entries">Link to Entries in index</Link>
-      </button>
+      <div>
+        <button>
+          <Link to="/entries">Link to Entries in index</Link>
+        </button>
+      </div>
+
+      <div>
+        <Entries />
+        
+      </div>
 
     </div>
   )

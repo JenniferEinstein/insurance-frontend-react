@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 function Entry({ entry }) {
     return (
+
         <tr>
             <td>
                 {entry.EOB ? (
@@ -14,6 +15,13 @@ function Entry({ entry }) {
                     { entry.patient }
             </td>
             <td>
+            <td>
+                    { entry.service_date }
+            </td>
+            <td>
+                    { entry.status }
+            </td>
+
                 <Link to={`/entry/${entry.id}`}>{ entry.description }</Link>
             </td>
             <td>

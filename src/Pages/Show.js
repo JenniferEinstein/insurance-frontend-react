@@ -1,8 +1,11 @@
-import React from 'react'
+import EntryDetails from "../components/EntryDetails"
 
 function Show() {
   return (
-    <div>Show</div>
+    <div>
+      <h3>Show Page, which has SongDetails element below </h3>
+      <EntryDetails />
+    </div>
   )
 }
 

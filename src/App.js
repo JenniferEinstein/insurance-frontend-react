@@ -6,29 +6,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //STYLING
 import './App.css';
 
-//PAGES
+//PAGES & COMPONENTS
 import Home from "./components/landing/Home";
 import Show from "./Pages/Show";
-import Entries from "./components/Entries";
 import PageNotFound from "./Pages/PageNotFound"
 import Edit from "./Pages/Edit";
-// import Index from "./Pages/Index";
-// import New from "./Pages/New";
-
-
-
-//COMPONENTS
 import NavBar from './components/common/NavBar';
 import Entry from './components/Entry';
-import EntryNewForm from './components/EntryNewForm';
-import EntryEditForm from './components/EntryEditForm';
+import New from "./Pages/New";
+import Index from "./Pages/Index";
 // import Sidebar from './components/common/SideBar';
 // import Footer from "./components/common/Footer";
 
 function App() {
   return (
     <div className="App">
-      <h1>App component</h1>
       <Router>
         <NavBar />
         {/* <Sidebar /> */}
@@ -36,10 +28,9 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/entry' element={<Entry />} />
-            <Route path='/entries' element={<Entries />} />
-            <Route path='/entry/new' element={<EntryNewForm />} />
+            <Route path='/entries' element={<Index />} />
+            <Route path='/entry/new' element={<New />} />
             <Route path="/entry/edit" element={<Edit />} />/
-            <Route path="/entry/editform" element={<EntryEditForm />} />/
             <Route path='/entry/:id' element={<Show />} />
             <Route path='*' element={<PageNotFound />} />
 

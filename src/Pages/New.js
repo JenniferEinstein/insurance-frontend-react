@@ -12,7 +12,7 @@ function New() {
       <h2>Component New.js</h2>
       <EntryNewForm />
       
-        <Link to="/entry/new"> 
+        <Link to="/entries/new"> 
           Create A New Entry
         </Link>
       

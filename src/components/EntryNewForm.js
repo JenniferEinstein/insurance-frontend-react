@@ -1,14 +1,21 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useState, } from "react";
+import { useNavigate } from "react-router-dom";
 // import "New.css";
 
-console.log("EntryNewForm component is being executed");
+// HOW ARE THE EDIT AND NEW FORMS DIFFERENT?
+// The new form doesn't need useParams or useEffect since it doesn't have to get something before it sends something.
+// But otherwise, they entries themselves are the same. 
+
 
 const API = process.env.REACT_APP_API_URL;
 
+console.log("EntryNewForm: before the function is executed");
+
 function EntryNewForm() {
-  let { id } = useParams();
+
+console.log("EntryNewForm component is being executed");
+
   let navigate = useNavigate();
 
   const [entry, setEntry] = useState({
@@ -23,18 +30,8 @@ function EntryNewForm() {
     claimnumber: "",
     EOB: false, 
     notes: "",
-  }, []);
+  },);
 
-  const addEntry = (newEntry) => {
-    axios.post(`${API}/entry`, newEntry)
-    .then(
-      () => {
-        navigate(`/`);
-      },
-      (error) => console.error(error)
-    )
-    .catch((c) => console.warn("catch", c));
-  };
 
   const handleInputChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -48,21 +45,23 @@ function EntryNewForm() {
     addEntry(entry);
   };
 
-  //I don't really understand what this next part does
 
-  useEffect(() => {
-    axios.get(`${API}/entry`).then(
-        (response)=> {setEntry(response.data);
-    })
-    .catch(() => {
-      navigate(`/not-found`);
-    });
-  }, [id, navigate]);
+  const addEntry = (newEntry) => {
+    axios.post(`${API}/entry`, newEntry)
+    .then(
+      () => {
+        navigate(`/`);
+      },
+      (error) => console.error(error)
+    )
+    .catch((c) => console.warn("catch", c));
+  };
+
 
 
   return (
     <div className="new">
-      <p>New dot js. Before form tag</p>
+      <p>EntryNewForm dot js. Before form tag</p>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <fieldset>

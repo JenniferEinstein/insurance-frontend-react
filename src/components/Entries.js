@@ -10,6 +10,7 @@ function Entries() {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
+    console.log(`Line 15 is ${API}/entries`)
     axios
       .get(`${API}/entries`)
 

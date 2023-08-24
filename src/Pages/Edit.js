@@ -1,12 +1,11 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-
-const API = process.env.REACT_APP_API_URL;
+import EntryEditForm from "../components/EntryEditForm";
 
 function Edit() {
   return (
-    <div>Edit</div>
+    <div className='edit'>
+        <h3>Edit Page</h3>
+        <EntryEditForm />
+    </div>
   )
 }
 
