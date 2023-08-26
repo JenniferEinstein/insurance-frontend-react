@@ -35,7 +35,7 @@ function App() {
             <Route path='*' element={<PageNotFound />} />
 
             {/* <Route path='/entry/:id/edit' element={<Edit />} /> */}
-  
+            {/* <Route path='/entry/:id' element={<Show />} /> */}
 
           </Routes>
         </main>
