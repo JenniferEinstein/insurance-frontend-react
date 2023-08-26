@@ -50,7 +50,7 @@ console.log("EntryNewForm component is being executed");
 
   const addEntry = (newEntry) => {
     axios
-      .post(`${API}/entry`, newEntry)
+      .post(`${API}/entries`, newEntry)
       .then(() => {
         navigate(`/`);
       })
@@ -165,6 +165,9 @@ console.log("EntryNewForm component is being executed");
             </label>
           </fieldset>
         </div>
+        
+          <input className="submit" type="submit" />
+
       </form>      
     </div>
   )
