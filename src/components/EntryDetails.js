@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {  useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 
 function EntryDetails() {
@@ -13,9 +13,13 @@ function EntryDetails() {
     deleteEntry();
   }
 
+  function formatDate(dateString) {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
   const deleteEntry = () => {
-    axios
-    .delete(`${API}/entries/${id}`)
+    axios.delete(`${API}/entries/${id}`)
     .then(() => {
       navigate(`/entries`);
     })
@@ -23,8 +27,8 @@ function EntryDetails() {
 };
 
   useEffect(() => {
-    axios
-      .get(`${API}/entries/${id}`)   
+    const API = process.env.REACT_APP_API_URL;
+    axios.get(`${API}/entries/${id}`)   
       .then((res) => {
         console.log("API URL", `${API}/entries/${id}`);
         console.log("API response:", res.data);
@@ -36,25 +40,33 @@ function EntryDetails() {
           error.response?.data || "unknown error"
         )
       );
-  }, [id, API]);
+  }, [id, navigate]);
 
     return(
         <div className="entry-details">
 
-          <h2>Change details here.</h2>
-          <p>Patient: {entry.patient}</p>
-          <p>Service Date: {entry.service_date}</p>
-          <p>Status: {entry.status}</p>
-          <p>Description: {entry.description}</p>
-          <p>Cost: {entry.cost}</p>
+          <h2>Entry Details </h2>
+          <h3>Time to update? Press here. </h3>
+          <button className='btn'  onClick = {() => {
+            navigate(`/entries/${id}/edit`)
+            }}>
+              HERE
+          </button>
 
-          <p>Insurance: {entry.insurance}</p>
-          <p>Claim #: {entry.claimnumber}</p>
-          <p>When did you send this to the insurance company? {entry.sentto_when}</p>
-          <p>How did you send this to the insurance company? {entry.sentto_how}</p>
-          <p>Have you received an Explanation of Benefits (EOB)? {entry.EOB ? "Yes" : "No"}</p>
-          <p>Notes: {entry.notes}</p>
+          <div className="data-lines">
+            <p>Patient: {entry.patient}</p>
+            <p>Service Date: {formatDate(entry.service_date)}</p>
+            <p>Status: {entry.status}</p>
+            <p>Description: {entry.description}</p>
+            <p>Cost:  { entry.cost ? `$${entry.cost}` : '' }</p>
 
+            <p>Insurance: {entry.insurance}</p>
+            <p>Claim #: {entry.claimnumber}</p>
+            <p>When did you send this to the insurance company? {formatDate(entry.sentto_when)}</p>
+            <p>How did you send this to the insurance company? {entry.sentto_how}</p>
+            <p>Have you received an Explanation of Benefits (EOB)? {entry.EOB ? "Yes" : "No"}</p>
+            <p>Notes: {entry.notes}</p>
+          </div>
       <button onClick={handleDelete}>Delete Entry</button>
    
 

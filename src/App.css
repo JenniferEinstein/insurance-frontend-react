@@ -48,3 +48,29 @@
 .entry-details {
   background-color: rgba(30, 143, 255, 0.29);
 }
+
+table,
+table td {
+  border: 1px solid #cccccc;
+}
+
+td {
+  text-align: left;
+}
+
+.description {
+  color: rgb(26, 39, 184)
+}
+
+.data-lines {
+  text-align: left;
+  margin-left: 5%;
+}
+
+.cost {
+  text-align: right;
+}
+
+.entry-table {
+  margin-left: 5%;
+}

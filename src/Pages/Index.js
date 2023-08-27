@@ -1,14 +1,10 @@
-// import {useState, useEffect} from 'react';
-// import axios from 'axios';
 import Entries from '../components/Entries';
-import { Link } from 'react-router-dom';
-
 
 function Index() {
   console.log("You have reached the Index Page")
   return (
     <div className='index'>
-      <h2>The Index Page</h2>
+      <h2>List of Entries</h2>
       <div>
         <Entries />
       </div>

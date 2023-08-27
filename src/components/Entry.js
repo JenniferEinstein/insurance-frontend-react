@@ -12,10 +12,10 @@ function Entry({ entry }) {
             <tr>
                 <td>{formatDate(entry.service_date)}</td>
                 <td> { entry.patient } </td>
-                <td>
-                    <Link to={`/entries/${entry.id}`}>{ entry.description }</Link>
+                <td className="description"> { entry.description }</td>
+                <td className="cost"> 
+                    { entry.cost ? `$${entry.cost}` : '' }
                 </td>
-                <td> { entry.cost }</td>
                 <td> { entry.status } </td>
                 <td> { entry.EOB } </td>
                 <td>
@@ -31,6 +31,11 @@ export default Entry;
 
 
 /*
+
+
+8-27-23
+Changed                     <Link to={`/entries/${entry.id}`}>{ entry.description }</Link> so it no longer links.
+
 8-23-23
 Code was 
         <>

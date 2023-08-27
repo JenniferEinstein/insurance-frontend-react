@@ -28,13 +28,11 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/entries' element={<Index />} />
             <Route path='/entries/new' element={<New />} />
-            <Route path="/entries/edit" element={<Edit />} />/
+            <Route path="/entries/:id/edit" element={<Edit />} />/
             <Route path='/entries/:id' element={<Show />} />
-            <Route path='/entries' element={<Entry />} />
             <Route path='*' element={<PageNotFound />} />
 
-            {/* <Route path='/entries/:id/edit' element={<Edit />} /> */}
-            {/* <Route path='/entries/:id' element={<Show />} /> */}
+            {/* <Route path='/entries' element={<Entry />} /> */}
 
           </Routes>
         </main>

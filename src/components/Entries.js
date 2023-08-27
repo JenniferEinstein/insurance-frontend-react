@@ -27,7 +27,7 @@ function Entries() {
   return (
     <div className="Entries">
       <section>
-        <table>
+        <table className="entry-table">
           <thead>
             <tr>
                 <th>Service Date</th>

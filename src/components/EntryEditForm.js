@@ -2,13 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
-const API = process.env.REACT_APP_API_URL;
+
 
 console.log("EntryEditForm: this log is before the function is executed");
 
 
 function EntryEditForm() {
-    console.log("EntryEditForm component is being executed");
+  console.log("EntryEditForm component is being executed");
+
+  const API = process.env.REACT_APP_API_URL;
   let { id } = useParams();
   let navigate = useNavigate();
 
@@ -26,9 +28,10 @@ function EntryEditForm() {
     notes: "",
   },);
 
+  const options = ["To send to insurance", "Sent to insurance", "Waiting for reimbursement", "Done!"];
+  
   const updateEntry = (updatedEntry) => {
-    axios
-      .put(`${API}/entries/${id}`, updatedEntry)
+    axios.put(`${API}/entries/${id}`, updatedEntry)
       .then(
         () => {
           navigate(`/entries/${id}`);
@@ -43,6 +46,10 @@ function EntryEditForm() {
     const { id, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setEntry({ ...entry, [id]: newValue });
+  };
+
+  const handleCheckboxChange = () => {
+    setEntry({ ...entry, EOB: !entry.EOB});
   };
 
   const handleSubmit = (event) => {
@@ -60,6 +67,132 @@ function EntryEditForm() {
 
 
   return (
+    <div className="edit entry-details">
+      <form onSubmit={handleSubmit} className="form">
+      <div className="form-group">
+          <fieldset>
+          <legend>Basic Information</legend>
+        <label htmlFor="patient">Patient Name:</label>
+        <input
+          type="text"
+          id="patient"
+          value={entry.patient}
+          onChange={handleInputChange}
+          required
+        />
+          <label htmlFor="service_date">Date of Service:</label>
+          <input type="date" id="service_date" name="service_date"  
+            value={entry.service_date}
+            onChange={handleInputChange}
+            required
+        />
+
+        <label htmlFor="description">Description:</label>
+            <input type="text" id="description"   
+            value={entry.description}
+            placeholder="office visit, Dr. B."
+            onChange={handleInputChange}
+            className="wide-input"
+            />  
+          </fieldset>
+          <br/><br/>
+        </div>
+
+        <div className="form-group">
+          <fieldset>
+            <legend>Insurance-related Information</legend>
+            <label htmlFor="insurance">Insurance:</label>
+            <input type="text" id="insurance" name="insurance" 
+            value={entry.insurance}
+            placeholder="name of insurance"
+            onChange={handleInputChange}
+            />
+            <br/><br/>           
+            <label htmlFor="cost">Amount charged:</label>
+            <input type="number" id="cost" name="charged"  
+            value={entry.cost}
+            onChange={handleInputChange} 
+            />
+            <br/><br/>
+            <label htmlFor="status">Status:</label>
+            <select 
+              id="status" 
+              name="status"
+              value={entry.status}
+              onChange={handleInputChange}
+            >
+              <option value="">Select status</option>
+              {options.map((option, idx) => (
+                <option key={idx} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <br/><br/>
+
+            <label htmlFor="senthow">How was this sent to the insurance company?</label>
+            <input type="text" id="senthow" name="senthow" 
+            value={entry.sentto_how}
+            placeholder="health portal, by mail, etc."
+            onChange={handleInputChange}
+            />
+            <br/><br/>
+            <label htmlFor="sentwhen">When was this sent to the insurance company?</label>
+            <input type="date" id="sentwhen" name="sentwhen" 
+            value={entry.sentto_when}
+            onChange={handleInputChange}
+            />
+            <br/><br/>
+            <label htmlFor="claimnumber">What claim number did the insurance assign to this?</label>
+            <input type="text" id="claimnumber" name="claimnumber" 
+            value={entry.claimnumber}
+            onChange={handleInputChange}
+            />
+            <br/><br/>
+            <label htmlFor="eob">I have received an explanation of benefits (EOB) from insurance.</label>
+            <input type="checkbox" id="eob" name="eob" 
+            value={entry.EOB}
+            onChange={handleCheckboxChange}
+            checked={entry.EOB}
+            />
+          </fieldset>
+          <br/><br/>
+          <div className="form-group">
+          <fieldset>
+            <legend>Notes to Self</legend>
+            <label>
+              <textarea
+               className="notes"
+               rows={4} 
+               cols={60} 
+               value={entry.notes}
+               onChange={handleInputChange}
+               id="notes"
+               />
+            </label>
+          </fieldset>
+</div>
+
+        <br />
+
+        <input type="submit" />
+        </div>
+      </form>
+
+      <Link to={`/entry/${id}`}>
+        <button>Nevermind!</button>
+      </Link>
+    </div>
+  );
+}
+
+export default EntryEditForm;
+
+/*  OLDER CODE
+
+code that looks like new form:
+
+ return (
     <div className="edit">
       <form onSubmit={handleSubmit} className="form">
       <div className="form-group">
@@ -136,7 +269,7 @@ function EntryEditForm() {
             <label htmlFor="eob">I have received an explanation of benefits (EOB) from insurance.</label>
             <input type="checkbox" id="eob" name="eob" 
             value={entry.EOB}
-            onChange={handleInputChange}
+            onChange={handleCheckboxChange}
             checked={entry.EOB}
             />
           </fieldset>
@@ -160,12 +293,14 @@ function EntryEditForm() {
       </Link>
     </div>
   );
-}
 
-export default EntryEditForm;
 
-// OLDER CODE
 
+
+
+
+
+//====================
 //   const handleTextChange = (event) => {
 //     setEntry({ ...entry, [event.target.id]: event.target.value });
 //   };
@@ -173,3 +308,6 @@ export default EntryEditForm;
 //   const handleCheckboxChange = () => {
 //     setEntry({ ...entry, eob: !entry.eob });
 //   };
+
+
+*/

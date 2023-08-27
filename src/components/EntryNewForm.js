@@ -35,9 +35,9 @@ function EntryNewForm() {
     const newValue = type === "checkbox" ? checked : value;
     setEntry({ ...entry, [id]: newValue });
   };
-  
-  const handleCheckboxChange = (field) => {
-    setEntry({ ...entry, [field]: !entry[field] });
+
+  const handleCheckboxChange = () => {
+    setEntry({ ...entry, EOB: !entry.EOB});
   };
 
   const handleSubmit = (e) => {
