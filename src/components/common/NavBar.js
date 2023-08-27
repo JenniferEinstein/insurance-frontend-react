@@ -13,7 +13,7 @@ export default function NavBar() {
     } else if (tabName === 'entries') {
       navigate('/entries');
     } else if (tabName === 'newEntry') {
-      navigate('/entry/new');
+      navigate('/entries/new');
     } else if (tabName === 'about') {
       // Handle your about route here
     }

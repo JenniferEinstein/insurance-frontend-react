@@ -27,14 +27,14 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/entries' element={<Index />} />
-            <Route path='/entry/new' element={<New />} />
-            <Route path="/entry/edit" element={<Edit />} />/
-            <Route path='/entry/:id' element={<Show />} />
-            <Route path='/entry' element={<Entry />} />
+            <Route path='/entries/new' element={<New />} />
+            <Route path="/entries/edit" element={<Edit />} />/
+            <Route path='/entries/:id' element={<Show />} />
+            <Route path='/entries' element={<Entry />} />
             <Route path='*' element={<PageNotFound />} />
 
-            {/* <Route path='/entry/:id/edit' element={<Edit />} /> */}
-            {/* <Route path='/entry/:id' element={<Show />} /> */}
+            {/* <Route path='/entries/:id/edit' element={<Edit />} /> */}
+            {/* <Route path='/entries/:id' element={<Show />} /> */}
 
           </Routes>
         </main>

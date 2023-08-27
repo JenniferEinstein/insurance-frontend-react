@@ -15,7 +15,7 @@ function EntryDetails() {
 
   const deleteEntry = () => {
     axios
-    .delete(`${API}/entry/${id}`)
+    .delete(`${API}/entries/${id}`)
     .then(() => {
       navigate(`/entries`);
     })
@@ -24,9 +24,9 @@ function EntryDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API}/entry/${id}`)   //yes, entry instead of entries
+      .get(`${API}/entries/${id}`)   
       .then((res) => {
-        console.log("API URL", `${API}/entry/${id}`);
+        console.log("API URL", `${API}/entries/${id}`);
         console.log("API response:", res.data);
         setEntry(res.data);
       })

@@ -13,13 +13,13 @@ function Entry({ entry }) {
                 <td>{formatDate(entry.service_date)}</td>
                 <td> { entry.patient } </td>
                 <td>
-                    <Link to={`/entry/${entry.id}`}>{ entry.description }</Link>
+                    <Link to={`/entries/${entry.id}`}>{ entry.description }</Link>
                 </td>
                 <td> { entry.cost }</td>
                 <td> { entry.status } </td>
                 <td> { entry.EOB } </td>
                 <td>
-                    <Link to={`/entry/${entry.id}`}>✏️</Link>
+                    <Link to={`/entries/${entry.id}`}>✏️</Link>
                 </td>
             </tr>
         </>

@@ -30,7 +30,7 @@ function EntryEditForm() {
 
   const updateEntry = (updatedEntry) => {
     axios
-      .put(`${API}/entry/${id}`, updatedEntry)
+      .put(`${API}/entries/${id}`, updatedEntry)
       .then(
         () => {
           navigate(`/entries/${id}`);

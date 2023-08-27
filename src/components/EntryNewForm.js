@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, } from "react";
 import { useNavigate } from "react-router-dom";
-// import "New.css";
 
 // HOW ARE THE EDIT AND NEW FORMS DIFFERENT?
 // The new form doesn't need useParams or useEffect since it doesn't have to get something before it sends something.
@@ -10,11 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const API = process.env.REACT_APP_API_URL;
 
-console.log("EntryNewForm: before the function is executed");
-
 function EntryNewForm() {
-
-console.log("EntryNewForm component is being executed");
 
   let navigate = useNavigate();
 
@@ -177,9 +172,6 @@ export default EntryNewForm
 
 
 // OLDER CODE 
-
-
-
   // const addEntry = (newEntry) => {
   //   axios.post(`${API}/entry`, newEntry)
   //   .then(
@@ -191,8 +183,6 @@ export default EntryNewForm
   //   .catch((c) => console.warn("catch", c));
   // };
 
-
-
   // const handleTextChange = (e) => {
   //   setEntry({ ...entry, [e.target.id]: e.target.value });
   // };
@@ -201,25 +191,3 @@ export default EntryNewForm
   //   setEntry({ ...entry, [field]: !entry[field] });
   // };
 
-
-            //   {/* <label htmlFor="notes">
-            //   <textarea value={entry.notes} onChange={handleInputChange} placeholder="called insurance 8/15 to find out where my payment was"/>
-            // </label>
-            // <input type="text" id="notes" name="notes"
-            // /> */}
-
-
-//NOTE : CHANGED CODE BELOW TO ABOVE
-/*
-<label htmlFor="status">Status:</label>
-<select id="status" name="status">
-  <option value="to send to insurance">To send to insurance</option>
-  <option value="sent to insurance">Sent to insurance</option>
-  <option value="waiting for reimbursement">Waiting for reimbursement</option>
-  <option value="done">done!</option>
-</select>
-<input type="text" id="status" name="status"  
-value={entry.status}
-onChange={handleInputChange}
-/>
-*/
