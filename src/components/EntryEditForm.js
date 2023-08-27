@@ -122,13 +122,12 @@ function EntryEditForm() {
             <label htmlFor="senthow">How was this sent to the insurance company?</label>
             <input type="text" id="senthow" name="senthow" 
             value={entry.sentto_how}
-            placeholder="through their portal, by mail, etc."
+            placeholder="health portal, by mail, etc."
             onChange={handleInputChange}
             />
             <label htmlFor="sentwhen">When was this sent to the insurance company?</label>
             <input type="date" id="sentwhen" name="sentwhen" 
             value={entry.sentto_when}
-            placeholder="through their portal, by mail, etc."
             onChange={handleInputChange}
             />
             <label htmlFor="claimnumber">What claim number did the insurance assign to this?</label>

@@ -36,6 +36,9 @@ function EntryNewForm() {
     setEntry({ ...entry, [id]: newValue });
   };
   
+  const handleCheckboxChange = (field) => {
+    setEntry({ ...entry, [field]: !entry[field] });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +59,7 @@ function EntryNewForm() {
 
   return (
     <div className="new">
-      <p>EntryNewForm dot js. Before form tag</p>
+      <h2>Create A New Entry</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <fieldset>
@@ -74,7 +77,7 @@ function EntryNewForm() {
             onChange={handleInputChange}
             required
             />
-            <hr></hr>
+            <br/><br/>
             <label htmlFor="description">Description:</label>
             <input type="text" id="description"   
             value={entry.description}
@@ -83,6 +86,7 @@ function EntryNewForm() {
             className="wide-input"
             />
           </fieldset>
+          <br/><br/>
         </div>
         <div className="form-group">
           <fieldset>
@@ -93,7 +97,7 @@ function EntryNewForm() {
             placeholder="name of insurance"
             onChange={handleInputChange}
             />
-            <hr></hr>
+            <br/><br/>
             
             <label htmlFor="cost">Amount charged:</label>
             <input type="number" id="cost" 
@@ -101,7 +105,7 @@ function EntryNewForm() {
             onChange={handleInputChange} 
             /> 
             {/* I have deleted the name attribute here and it now works */}
-            <hr></hr>
+            <br/><br/>
             
             <label htmlFor="status">Status:</label>
             <select 
@@ -118,37 +122,37 @@ function EntryNewForm() {
               ))}
             </select>
 
-            <hr></hr>
+            <br/><br/>
             <label htmlFor="sentto_how">How was this sent to the insurance company?</label>
             <input type="text" id="sentto_how" name="sentto_how" 
             value={entry.sentto_how}
-            placeholder="through their portal, by mail, etc."
+            placeholder="health portal, mail, etc."
             onChange={handleInputChange}
             />
-                        <hr></hr>
+            <br/><br/>
             <label htmlFor="sentto_when">When was this sent to the insurance company?</label>
             <input type="date" id="sentto_when" name="sentto_when" 
             value={entry.sentto_when}
-            placeholder="through their portal, by mail, etc."
             onChange={handleInputChange}
             />            
-            <hr></hr>
+            <br/><br/>
             <label htmlFor="claimnumber">What claim number did the insurance assign to this?</label>
             <input type="text" id="claimnumber" name="claimnumber" 
             value={entry.claimnumber}
             onChange={handleInputChange}
             />            
-            <hr></hr>
+            <br/><br/>
             <label htmlFor="eob">I have received an explanation of benefits (EOB) from insurance.</label>
             <input type="checkbox" id="eob" name="eob" 
             value={entry.EOB}
-            onChange={handleInputChange}
+            onChange={handleCheckboxChange}
             checked={entry.EOB}
             />
           
           </fieldset>
+          <br/><br/>
           <fieldset>
-            <legend>Notes</legend>
+            <legend>Notes to Self</legend>
             <label>
               <textarea 
                 className="notes" 
@@ -164,6 +168,7 @@ function EntryNewForm() {
           <input className="submit" type="submit" />
 
       </form>      
+      <br/>      <br/>
     </div>
   )
 }
