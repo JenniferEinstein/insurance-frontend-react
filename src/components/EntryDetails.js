@@ -40,8 +40,8 @@ function EntryDetails() {
 
     return(
         <div className="entry-details">
-          <h1>EntryDetails Element.</h1>
-          <h5>Entry details will be here.</h5>
+
+          <h2>Change details here.</h2>
           <p>Patient: {entry.patient}</p>
           <p>Service Date: {entry.service_date}</p>
           <p>Status: {entry.status}</p>

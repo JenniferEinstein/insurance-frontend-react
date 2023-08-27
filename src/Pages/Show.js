@@ -7,7 +7,6 @@ function Show() {
 
   return (
     <div className="show">
-      <h3>Show Page, which has the EntryDetails element below </h3>
       <EntryDetails entryID={id} />
     </div>
   );

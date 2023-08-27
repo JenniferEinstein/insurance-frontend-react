@@ -2,8 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
-// IS USEPARAMS NEEDED?
-
 const API = process.env.REACT_APP_API_URL;
 
 console.log("EntryEditForm: this log is before the function is executed");
