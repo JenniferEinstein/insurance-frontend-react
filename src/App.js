@@ -23,7 +23,6 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        {/* <Sidebar /> */}
         <main>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -74,7 +73,6 @@ B
 
 
 A
-
             <Route path='/' element={<Home />} />
             <Route path='/entry' element={<Entry />} />
             <Route path='/entry/all-entries' element={<Index />} />
