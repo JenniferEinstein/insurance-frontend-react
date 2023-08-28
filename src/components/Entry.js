@@ -17,7 +17,7 @@ function Entry({ entry }) {
                     { entry.cost ? `$${entry.cost}` : '' }
                 </td>
                 <td> { entry.status } </td>
-                <td> { entry.EOB } </td>
+                <td> { entry.eob } </td>
                 <td>
                     <Link to={`/entries/${entry.id}`}>✏️</Link>
                 </td>
@@ -41,7 +41,7 @@ Code was
         <>
             <tr>
                 <td>
-                    {entry.EOB ? (
+                    {entry.eob ? (
                     <span>⭐️</span>
                     ) : (
                     <span>&nbsp; &nbsp; &nbsp;</span>

@@ -3,12 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
 
-
-console.log("EntryEditForm: this log is before the function is executed");
-
-
 function EntryEditForm() {
-  console.log("EntryEditForm component is being executed");
 
   const API = process.env.REACT_APP_API_URL;
   let { id } = useParams();
@@ -24,46 +19,47 @@ function EntryEditForm() {
     sentto_how: "",
     sentto_when: "",
     claimnumber: "",
-    EOB: "", 
+    eob: "", 
     notes: "",
   },);
 
   const options = ["To send to insurance", "Sent to insurance", "Waiting for reimbursement", "Done!"];
-  
-  const updateEntry = (updatedEntry) => {
-    axios.put(`${API}/entries/${id}`, updatedEntry)
-      .then(
-        () => {
-          navigate(`/entries/${id}`);
-        },
-        (error) => console.error(error)
-      )
-      .catch((c) => console.warn("catch", c));
-  };
-
 
   const handleInputChange = (e) => {
     const { id, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-    setEntry({ ...entry, [id]: newValue });
-  };
+    const eobValue = type === "checkbox" ? checked : value;
+    setEntry((prevEntry) => ({ ...prevEntry, [id]: eobValue }));
+};
 
-  const handleCheckboxChange = () => {
-    setEntry({ ...entry, EOB: !entry.EOB});
-  };
+
+const handleCheckboxChange = () => {
+  setEntry((prevEntry) => ({ ...prevEntry, eob: !prevEntry.eob }));
+};
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     updateEntry(entry, id);
   };
 
+  
+  const updateEntry = (updatedEntry) => {
+    axios
+      .put(`${API}/entries/${id}`, updatedEntry)
+      .then(() => {
+          navigate(`/entries/${id}`);
+        })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
 
   useEffect(() => {
     axios.get(`${API}/entries/${id}`).then(
       (response) => setEntry(response.data),
       (error) => navigate(`/not-found`)
     );
-  }, [id, navigate]);
+  }, [id, navigate, API]);
 
 
   return (
@@ -76,12 +72,16 @@ function EntryEditForm() {
         <input
           type="text"
           id="patient"
+          name="patient" 
           value={entry.patient}
           onChange={handleInputChange}
           required
         />
           <label htmlFor="service_date">Date of Service:</label>
-          <input type="date" id="service_date" name="service_date"  
+          <input 
+            type="date" 
+            id="service_date" 
+            name="service_date"  
             value={entry.service_date}
             onChange={handleInputChange}
             required
@@ -109,9 +109,11 @@ function EntryEditForm() {
             />
             <br/><br/>           
             <label htmlFor="cost">Amount charged:</label>
-            <input type="number" id="cost" name="charged"  
-            value={entry.cost}
-            onChange={handleInputChange} 
+            <input 
+              type="number" 
+              id="cost"
+              value={entry.cost}
+              onChange={handleInputChange} 
             />
             <br/><br/>
             <label htmlFor="status">Status:</label>
@@ -130,15 +132,15 @@ function EntryEditForm() {
             </select>
             <br/><br/>
 
-            <label htmlFor="senthow">How was this sent to the insurance company?</label>
-            <input type="text" id="senthow" name="senthow" 
+            <label htmlFor="sentto_how">How was this sent to the insurance company?</label>
+            <input type="text" id="sentto_how" name="sentto_how" 
             value={entry.sentto_how}
             placeholder="health portal, by mail, etc."
             onChange={handleInputChange}
             />
             <br/><br/>
-            <label htmlFor="sentwhen">When was this sent to the insurance company?</label>
-            <input type="date" id="sentwhen" name="sentwhen" 
+            <label htmlFor="sentto_when">When was this sent to the insurance company?</label>
+            <input type="date" id="sentto_when" name="sentto_when" 
             value={entry.sentto_when}
             onChange={handleInputChange}
             />
@@ -151,9 +153,9 @@ function EntryEditForm() {
             <br/><br/>
             <label htmlFor="eob">I have received an explanation of benefits (EOB) from insurance.</label>
             <input type="checkbox" id="eob" name="eob" 
-            value={entry.EOB}
+            value={entry.eob}
             onChange={handleCheckboxChange}
-            checked={entry.EOB}
+            checked={entry.eob}
             />
           </fieldset>
           <br/><br/>
@@ -171,17 +173,18 @@ function EntryEditForm() {
                />
             </label>
           </fieldset>
-</div>
-
-        <br />
-
-        <input type="submit" />
         </div>
+
+          <input className="submit" type="submit" />
+        
+        </div>
+        <br/>      <br/>
       </form>
 
       <Link to={`/entry/${id}`}>
         <button>Nevermind!</button>
       </Link>
+      <br/>      <br/>
     </div>
   );
 }

@@ -64,7 +64,7 @@ function EntryDetails() {
             <p>Claim #: {entry.claimnumber}</p>
             <p>When did you send this to the insurance company? {formatDate(entry.sentto_when)}</p>
             <p>How did you send this to the insurance company? {entry.sentto_how}</p>
-            <p>Have you received an Explanation of Benefits (EOB)? {entry.EOB ? "Yes" : "No"}</p>
+            <p>Have you received an Explanation of Benefits (EOB)? {entry.eob ? "Yes" : "No"}</p>
             <p>Notes: {entry.notes}</p>
           </div>
       <button onClick={handleDelete}>Delete Entry</button>
