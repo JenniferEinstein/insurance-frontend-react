@@ -1,0 +1,54 @@
+/* EntryEditForm.css */
+
+
+.form-columns {
+  display: flex;
+  align-items: flex-start; /* Align items at the top of the column */
+}
+
+.form-labels {
+  flex: 1; /* Take up 1/3 of the available space */
+  margin-right: 1rem; /* Add some space between the columns */
+}
+
+.form-fields {
+  flex: 2; /* Take up 2/3 of the available space */
+  display: flex;
+  flex-direction: column; /* Align fields vertically */
+}
+
+.form-fields input {
+  margin-bottom: 1rem; /* Add spacing between fields */
+}
+
+.submit {
+  margin-top: 1rem;
+}
+
+
+.vertical-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .horizontal-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem; /* Adjust the value to control the offset */
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input {
+    margin-bottom: 1rem;
+  }
+  
+  .wide-input {
+    width: 100%;
+  }
+  
+
+  /* .data-lines, .entry-table, .entry-details are in App.css */

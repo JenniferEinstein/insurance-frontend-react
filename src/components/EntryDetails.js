@@ -10,6 +10,7 @@ function EntryDetails() {
   let navigate = useNavigate();
     
   const handleDelete = () => {
+    console.log("handleDelete")
     deleteEntry();
   }
 
@@ -19,12 +20,16 @@ function EntryDetails() {
   }
 
   const deleteEntry = () => {
-    axios.delete(`${API}/entries/${id}`)
-    .then(() => {
-      navigate(`/entries`);
-    })
-    .catch((error) => console.error("Error Deleting entry:", error));
-};
+    console.log("deleteEntry");
+    const deleteURL = `${API}/entries/${id}`;
+    console.log(deleteURL);
+    axios.delete(deleteURL, { headers: { 'Content-Type': 'application/json' } })
+      .then((response) => {
+        navigate(`/entries`);
+      })
+      .catch((error) => console.error("Error Deleting entry:", error));
+  };
+
 
   useEffect(() => {
     const API = process.env.REACT_APP_API_URL;
@@ -46,12 +51,12 @@ function EntryDetails() {
         <div className="entry-details">
 
           <h2>Entry Details </h2>
-          <h3>Time to update? Press here. </h3>
+          <h3>Time to update?&nbsp;   
           <button className='btn'  onClick = {() => {
             navigate(`/entries/${id}/edit`)
             }}>
-              HERE
-          </button>
+              Press here
+          </button> </h3>
 
           <div className="data-lines">
             <p>Patient: {entry.patient}</p>
@@ -62,17 +67,14 @@ function EntryDetails() {
 
             <p>Insurance: {entry.insurance}</p>
             <p>Claim #: {entry.claimnumber}</p>
-            <p>When did you send this to the insurance company? {formatDate(entry.sentto_when)}</p>
-            <p>How did you send this to the insurance company? {entry.sentto_how}</p>
+            <p>When was this sent to the insurance company? {formatDate(entry.sentto_when)}</p>
+            <p>How was this sent to the insurance company? {entry.sentto_how}</p>
             <p>Have you received an Explanation of Benefits (EOB)? {entry.eob ? "Yes" : "No"}</p>
             <p>Notes: {entry.notes}</p>
           </div>
+ 
       <button onClick={handleDelete}>Delete Entry</button>
-   
-
-
-
-
+  
 
         </div>
     )
