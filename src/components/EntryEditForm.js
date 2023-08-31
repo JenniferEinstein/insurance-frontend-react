@@ -66,36 +66,51 @@ const handleCheckboxChange = () => {
     <div className="edit entry-details">
       
       <h2>Update This Entry</h2>
-      <h3>      <Link to={`/entries/${id}`}>
-        <button>Never mind!</button>
-      </Link></h3>
+      <h3>Cancel the update?&nbsp;      
+        <Link to={`/entries/${id}`}>
+          <button>Never mind!</button>
+        </Link>
+      </h3>
       <form onSubmit={handleSubmit} className="form data-lines">
+        <div className="form-container">
         <div className="form-columns">
-          <div className="form-labels"></div>
-        </div>
-        <div className="form-group vertical-group">
-  
-        <label htmlFor="patient">Patient:</label>
-        <input
-          type="text"
-          id="patient"
-          name="patient" 
-          value={entry.patient}
-          onChange={handleInputChange}
-          required
-        />
-        <br/><br/>
-          <label htmlFor="service_date">Service Date:</label>
-          <input 
+          <div className="form-labels">
+            <label htmlFor="patient">Patient:</label>
+            <br/><br/>
+            <label htmlFor="service_date">Service Date:</label>
+            <br/><br/>
+            <label htmlFor="status">Status:</label>
+            <br/><br/>
+            <label htmlFor="description">Description:</label>
+            <br/><br/>
+            <label htmlFor="cost">Cost:</label>
+            <br/><br/>
+            <label htmlFor="insurance">Insurance:</label>
+            <br/><br/>
+            <label htmlFor="claimnumber">Claim number?</label>
+            <br/><br/>
+            <label htmlFor="sentto_when">Date sent to the insurance company?</label>
+            <br/><br/>
+            <label htmlFor="sentto_how">Method sent to the insurance company?</label>
+            <br/><br/>
+          </div>
+          <div className="form-fields">
+            <input
+            type="text"
+            id="patient"
+            name="patient" 
+            value={entry.patient}
+            onChange={handleInputChange}
+            required
+            />
+            <input 
             type="date" 
             id="service_date" 
             name="service_date"  
             value={entry.service_date}
             onChange={handleInputChange}
             required
-        />
-            <br/><br/>
-            <label htmlFor="status">Status:</label>
+            />
             <select 
               id="status" 
               name="status"
@@ -109,20 +124,14 @@ const handleCheckboxChange = () => {
                 </option>
               ))}
             </select>
-            <br/><br/>
-        <label htmlFor="description">Description:</label>
+            <br/>
             <input type="text" id="description"   
             value={entry.description}
             placeholder="office visit, Dr. B."
             onChange={handleInputChange}
             className="wide-input"
             />  
-
-          <br/><br/>
-        </div>
-
-        <div className="form-group horizontal-group">
-            <label htmlFor="cost">Cost:</label>
+ 
             <input 
               type="number" 
               id="cost"
@@ -130,50 +139,42 @@ const handleCheckboxChange = () => {
               onChange={handleInputChange} 
             />
 
-            <br/><br/>
-            <label htmlFor="insurance">Insurance:</label>
             <input type="text" id="insurance" name="insurance" 
             value={entry.insurance}
             placeholder="name of insurance"
             onChange={handleInputChange}
             />
-            <br/><br/>    
-
-            <label htmlFor="claimnumber">What claim number did the insurance assign to this?</label>
+ 
+ 
             <input type="text" id="claimnumber" name="claimnumber" 
             value={entry.claimnumber}
             onChange={handleInputChange}
             />
-            <br/><br/>       
-
-            <label htmlFor="sentto_when">When was this sent to the insurance company?</label>
+    
             <input type="date" id="sentto_when" name="sentto_when" 
             value={entry.sentto_when}
             onChange={handleInputChange}
             />
-            <br/><br/> 
-            
-            <label htmlFor="sentto_how">How was this sent to the insurance company?</label>
             <input type="text" id="sentto_how" name="sentto_how" 
             value={entry.sentto_how}
             placeholder="health portal, by mail, etc."
             onChange={handleInputChange}
             />
-            <br/><br/>
-
-
-            <label htmlFor="eob">I have received an explanation of benefits (EOB) from insurance.</label>
-            <input type="checkbox" id="eob" name="eob" 
+          </div>
+        </div>
+        </div>
+        <div className="form-group">
+          <br/><br/>
+        <div className="form-group">
+        <label htmlFor="eob">Explanation of benefits (EOB) received</label>
+        <input type="checkbox" id="eob" name="eob" 
             value={entry.eob}
             onChange={handleCheckboxChange}
             checked={entry.eob}
             />
-
           <br/><br/>
-          <div className="form-group">
-
-            <legend>Notes</legend>
-            <label>
+        <legend>Notes</legend>
+        <label>
               <textarea
                className="notes"
                rows={4} 
@@ -182,17 +183,12 @@ const handleCheckboxChange = () => {
                onChange={handleInputChange}
                id="notes"
                />
-            </label>
-
+        </label>
         </div>
-
           <input className="submit go-right" type="submit" />
-        
         </div>
         <br/>      <br/>
       </form>
-
-
       <br/>      <br/>
     </div>
   );
