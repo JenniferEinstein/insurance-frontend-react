@@ -15,7 +15,7 @@ export default function NavBar() {
     } else if (tabName === 'newEntry') {
       navigate('/entries/new');
     } else if (tabName === 'about') {
-      // Handle your about route here
+      navigate('/about');
     }
   };
 
@@ -24,12 +24,12 @@ export default function NavBar() {
       <div className="logo">
         <img src={logo} alt="Logo" className="logo-img" />
       </div>  
-   
+      <h2>Health Insurance Tracking App</h2>
       <div className="nav-links">
         <a onClick={() => handleTabClick('home')}>Home</a>
         <a onClick={() => handleTabClick('entries')}>See All Entries</a>
         <a onClick={() => handleTabClick('newEntry')}>Create a New Entry</a>
-        <a href="#about">About</a>
+        <a onClick={() => handleTabClick('/about')}>About</a>
       </div>
 
    

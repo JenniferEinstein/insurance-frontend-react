@@ -12,11 +12,10 @@ import Show from "./Pages/Show";
 import PageNotFound from "./Pages/PageNotFound"
 import Edit from "./Pages/Edit";
 import NavBar from './components/common/NavBar';
-import Entry from './components/Entry';
 import New from "./Pages/New";
 import Index from "./Pages/Index";
-// import Sidebar from './components/common/SideBar';
-// import Footer from "./components/common/Footer";
+import Footer from "./components/common/Footer";
+import About from './components/common/About';
 
 function App() {
   return (
@@ -30,12 +29,14 @@ function App() {
             <Route path='/entries/new' element={<New />} />
             <Route path="/entries/:id/edit" element={<Edit />} />/
             <Route path='/entries/:id' element={<Show />} />
+            <Route path='/about' element={<About />} />
             <Route path='*' element={<PageNotFound />} />
 
             {/* <Route path='/entries' element={<Entry />} /> */}
 
           </Routes>
         </main>
+        <Footer />
       </Router>
     </div>
   );
