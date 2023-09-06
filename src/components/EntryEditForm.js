@@ -44,6 +44,7 @@ const handleCheckboxChange = () => {
 
   
   const updateEntry = (updatedEntry) => {
+    console.log("URL:",`${API}/entries/${id}`);
     axios
       .put(`${API}/entries/${id}`, updatedEntry)
       .then(() => {
